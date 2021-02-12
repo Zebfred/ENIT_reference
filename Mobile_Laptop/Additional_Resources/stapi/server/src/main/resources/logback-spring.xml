@@ -1,0 +1,98 @@
+<configuration debug="true">
+	<timestamp key="byDay" datePattern="yyyyMMdd"/>
+	<conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+	<property name="CONSOLE_PATTERN" value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){yellow} %clr(%5p){blue} %clr(${PID:- }){green} %clr(%-60.60logger{59}){magenta} %clr(::){red} %msg %n"/>
+	<property name="FILE_PATTERN"    value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } %logger :: %msg %n"/>
+	<property resource="application.properties"/>
+	<property resource="application-stapi-custom.properties"/>
+	<springProperty name="destinationPath" source="logging.log-files-path"/>
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${CONSOLE_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="FULL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${destinationPath}/full/full.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${FILE_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="ETL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${destinationPath}/etl/etl.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${FILE_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="HIBERNATE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${destinationPath}/hibernate/hibernate.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${FILE_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<logger name="org.springframework" additivity="FALSE" level="${logging.level.springframework}">
+		<appender-ref ref="CONSOLE"/>
+	</logger>
+
+	<logger name="org.springframework.boot.web.servlet.FilterRegistrationBean" level="${logging.level.springframeworkServlet}">
+		<appender-ref ref="CONSOLE"/>
+	</logger>
+	<logger name="org.springframework.web.web.servlet.handler.SimpleUrlHandlerMapping" level="${logging.level.springframeworkServlet}">
+		<appender-ref ref="CONSOLE"/>
+	</logger>
+	<logger name="org.springframework.web.web.servlet.handler.AbstractUrlHandlerMapping" level="${logging.level.springframeworkServlet}">
+		<appender-ref ref="CONSOLE"/>
+	</logger>
+	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" level="${logging.level.springframeworkServlet}">
+		<appender-ref ref="CONSOLE"/>
+	</logger>
+	<logger name="org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping" level="${logging.level.actuator}">
+		<appender-ref ref="CONSOLE"/>
+	</logger>
+	<logger name="org.springframework.boot.actuate.endpoint.jmx.EndpointMBeanExporter" level="${logging.level.actuator}">
+		<appender-ref ref="CONSOLE"/>
+	</logger>
+
+	<logger name="liquibase" additivity="FALSE" level="${logging.level.liquibase}">
+		<appender-ref ref="CONSOLE"/>
+	</logger>
+
+	<logger name="org.hibernate.SQL" additivity="FALSE" level="${logging.level.hibernateSql}">
+		<appender-ref ref="HIBERNATE"/>
+	</logger>
+
+	<logger name="com.cezarykluczynski.stapi" level="${logging.level.stapiConsole}">
+		<appender-ref ref="CONSOLE"/>
+	</logger>
+
+	<logger name="com.cezarykluczynski.stapi" additivity="FALSE" level="${logging.level.stapiEtl}">
+		<appender-ref ref="ETL"/>
+	</logger>
+
+	<root level="${logging.level.full}">
+		<appender-ref ref="FULL"/>
+	</root>
+</configuration>

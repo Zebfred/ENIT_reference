@@ -1,0 +1,616 @@
+swagger: '2.0'
+info:
+  title: STAPI
+  version: '1.0.0'
+host: stapi.co
+schemes:
+  - http
+basePath: /api/v1/rest
+produces:
+  - application/json
+paths:
+  /animal:
+    $ref: ./animal/path/animal.path.yaml
+  /animal/search:
+    $ref: ./animal/path/animalSearch.path.yaml
+  /astronomicalObject:
+    $ref: ./astronomical_object/path/astronomicalObject.path.yaml
+  /astronomicalObject/search:
+    $ref: ./astronomical_object/path/astronomicalObjectSearch.path.yaml
+  /book:
+    $ref: ./book/path/book.path.yaml
+  /book/search:
+    $ref: ./book/path/bookSearch.path.yaml
+  /bookCollection:
+    $ref: ./book_collection/path/bookCollection.path.yaml
+  /bookCollection/search:
+    $ref: ./book_collection/path/bookCollectionSearch.path.yaml
+  /bookSeries:
+    $ref: ./book_series/path/bookSeries.path.yaml
+  /bookSeries/search:
+    $ref: ./book_series/path/bookSeriesSearch.path.yaml
+  /character:
+    $ref: ./character/path/character.path.yaml
+  /character/search:
+    $ref: ./character/path/characterSearch.path.yaml
+  /comics:
+    $ref: ./comics/path/comics.path.yaml
+  /comics/search:
+    $ref: ./comics/path/comicsSearch.path.yaml
+  /comicCollection:
+    $ref: ./comic_collection/path/comicCollection.path.yaml
+  /comicCollection/search:
+    $ref: ./comic_collection/path/comicCollectionSearch.path.yaml
+  /comicSeries:
+    $ref: ./comic_series/path/comicSeries.path.yaml
+  /comicSeries/search:
+    $ref: ./comic_series/path/comicSeriesSearch.path.yaml
+  /comicStrip:
+    $ref: ./comic_strip/path/comicStrip.path.yaml
+  /comicStrip/search:
+    $ref: ./comic_strip/path/comicStripSearch.path.yaml
+  /company:
+    $ref: ./company/path/company.path.yaml
+  /company/search:
+    $ref: ./company/path/companySearch.path.yaml
+  /conflict:
+    $ref: ./conflict/path/conflict.path.yaml
+  /conflict/search:
+    $ref: ./conflict/path/conflictSearch.path.yaml
+  /element:
+    $ref: ./element/path/element.path.yaml
+  /element/search:
+    $ref: ./element/path/elementSearch.path.yaml
+  /episode:
+    $ref: ./episode/path/episode.path.yaml
+  /episode/search:
+    $ref: ./episode/path/episodeSearch.path.yaml
+  /food:
+    $ref: ./food/path/food.path.yaml
+  /food/search:
+    $ref: ./food/path/foodSearch.path.yaml
+  /literature:
+    $ref: ./literature/path/literature.path.yaml
+  /literature/search:
+    $ref: ./literature/path/literatureSearch.path.yaml
+  /location:
+    $ref: ./location/path/location.path.yaml
+  /location/search:
+    $ref: ./location/path/locationSearch.path.yaml
+  /magazine:
+    $ref: ./magazine/path/magazine.path.yaml
+  /magazine/search:
+    $ref: ./magazine/path/magazineSearch.path.yaml
+  /magazineSeries:
+    $ref: ./magazine_series/path/magazineSeries.path.yaml
+  /magazineSeries/search:
+    $ref: ./magazine_series/path/magazineSeriesSearch.path.yaml
+  /material:
+    $ref: ./material/path/material.path.yaml
+  /material/search:
+    $ref: ./material/path/materialSearch.path.yaml
+  /medicalCondition:
+    $ref: ./medical_condition/path/medicalCondition.path.yaml
+  /medicalCondition/search:
+    $ref: ./medical_condition/path/medicalConditionSearch.path.yaml
+  /movie:
+    $ref: ./movie/path/movie.path.yaml
+  /movie/search:
+    $ref: ./movie/path/movieSearch.path.yaml
+  /occupation:
+    $ref: ./occupation/path/occupation.path.yaml
+  /occupation/search:
+    $ref: ./occupation/path/occupationSearch.path.yaml
+  /organization:
+    $ref: ./organization/path/organization.path.yaml
+  /organization/search:
+    $ref: ./organization/path/organizationSearch.path.yaml
+  /performer:
+    $ref: ./performer/path/performer.path.yaml
+  /performer/search:
+    $ref: ./performer/path/performerSearch.path.yaml
+  /season:
+    $ref: ./season/path/season.path.yaml
+  /season/search:
+    $ref: ./season/path/seasonSearch.path.yaml
+  /series:
+    $ref: ./series/path/series.path.yaml
+  /series/search:
+    $ref: ./series/path/seriesSearch.path.yaml
+  /soundtrack:
+    $ref: ./soundtrack/path/soundtrack.path.yaml
+  /soundtrack/search:
+    $ref: ./soundtrack/path/soundtrackSearch.path.yaml
+  /spacecraft:
+    $ref: ./spacecraft/path/spacecraft.path.yaml
+  /spacecraft/search:
+    $ref: ./spacecraft/path/spacecraftSearch.path.yaml
+  /spacecraftClass:
+    $ref: ./spacecraft_class/path/spacecraftClass.path.yaml
+  /spacecraftClass/search:
+    $ref: ./spacecraft_class/path/spacecraftClassSearch.path.yaml
+  /species:
+    $ref: ./species/path/species.path.yaml
+  /species/search:
+    $ref: ./species/path/speciesSearch.path.yaml
+  /staff:
+    $ref: ./staff/path/staff.path.yaml
+  /staff/search:
+    $ref: ./staff/path/staffSearch.path.yaml
+  /technology:
+    $ref: ./technology/path/technology.path.yaml
+  /technology/search:
+    $ref: ./technology/path/technologySearch.path.yaml
+  /title:
+    $ref: ./title/path/title.path.yaml
+  /title/search:
+    $ref: ./title/path/titleSearch.path.yaml
+  /tradingCard:
+    $ref: ./trading_card/path/tradingCard.path.yaml
+  /tradingCard/search:
+    $ref: ./trading_card/path/tradingCardSearch.path.yaml
+  /tradingCardDeck:
+    $ref: ./trading_card_deck/path/tradingCardDeck.path.yaml
+  /tradingCardDeck/search:
+    $ref: ./trading_card_deck/path/tradingCardDeckSearch.path.yaml
+  /tradingCardSet:
+    $ref: ./trading_card_set/path/tradingCardSet.path.yaml
+  /tradingCardSet/search:
+    $ref: ./trading_card_set/path/tradingCardSetSearch.path.yaml
+  /videoGame:
+    $ref: ./video_game/path/videoGame.path.yaml
+  /videoGame/search:
+    $ref: ./video_game/path/videoGameSearch.path.yaml
+  /videoRelease:
+    $ref: ./video_release/path/videoRelease.path.yaml
+  /videoRelease/search:
+    $ref: ./video_release/path/videoReleaseSearch.path.yaml
+  /weapon:
+    $ref: ./weapon/path/weapon.path.yaml
+  /weapon/search:
+    $ref: ./weapon/path/weaponSearch.path.yaml
+definitions:
+  AnimalHeader:
+    $ref: ./animal/entity/animalHeader.yaml
+  AnimalBase:
+    $ref: ./animal/entity/animalBase.yaml
+  AnimalFull:
+    $ref: ./animal/entity/animalFull.yaml
+  AnimalBaseResponse:
+    $ref: ./animal/entity/animalBaseResponse.yaml
+  AnimalFullResponse:
+    $ref: ./animal/entity/animalFullResponse.yaml
+  AstronomicalObjectHeader:
+    $ref: ./astronomical_object/entity/astronomicalObjectHeader.yaml
+  AstronomicalObjectBase:
+    $ref: ./astronomical_object/entity/astronomicalObjectBase.yaml
+  AstronomicalObjectFull:
+    $ref: ./astronomical_object/entity/astronomicalObjectFull.yaml
+  AstronomicalObjectBaseResponse:
+    $ref: ./astronomical_object/entity/astronomicalObjectBaseResponse.yaml
+  AstronomicalObjectFullResponse:
+    $ref: ./astronomical_object/entity/astronomicalObjectFullResponse.yaml
+  AstronomicalObjectType:
+    $ref: ./astronomical_object/entity/enum/astronomicalObjectType.yaml
+  BloodType:
+    $ref: ./common/entity/enum/bloodType.yaml
+  BookHeader:
+    $ref: ./book/entity/bookHeader.yaml
+  BookBase:
+    $ref: ./book/entity/bookBase.yaml
+  BookFull:
+    $ref: ./book/entity/bookFull.yaml
+  BookBaseResponse:
+    $ref: ./book/entity/bookBaseResponse.yaml
+  BookFullResponse:
+    $ref: ./book/entity/bookFullResponse.yaml
+  BookCollectionHeader:
+    $ref: ./book_collection/entity/bookCollectionHeader.yaml
+  BookCollectionBase:
+    $ref: ./book_collection/entity/bookCollectionBase.yaml
+  BookCollectionFull:
+    $ref: ./book_collection/entity/bookCollectionFull.yaml
+  BookCollectionBaseResponse:
+    $ref: ./book_collection/entity/bookCollectionBaseResponse.yaml
+  BookCollectionFullResponse:
+    $ref: ./book_collection/entity/bookCollectionFullResponse.yaml
+  BookSeriesHeader:
+    $ref: ./book_series/entity/bookSeriesHeader.yaml
+  BookSeriesBase:
+    $ref: ./book_series/entity/bookSeriesBase.yaml
+  BookSeriesFull:
+    $ref: ./book_series/entity/bookSeriesFull.yaml
+  BookSeriesBaseResponse:
+    $ref: ./book_series/entity/bookSeriesBaseResponse.yaml
+  BookSeriesFullResponse:
+    $ref: ./book_series/entity/bookSeriesFullResponse.yaml
+  CharacterHeader:
+    $ref: ./character/entity/characterHeader.yaml
+  CharacterBase:
+    $ref: ./character/entity/characterBase.yaml
+  CharacterFull:
+    $ref: ./character/entity/characterFull.yaml
+  CharacterBaseResponse:
+    $ref: ./character/entity/characterBaseResponse.yaml
+  CharacterFullResponse:
+    $ref: ./character/entity/characterFullResponse.yaml
+  CharacterRelation:
+    $ref: ./character/entity/characterRelation.yaml
+  CharacterSpecies:
+    $ref: ./character/entity/characterSpecies.yaml
+  ComicsHeader:
+    $ref: ./comics/entity/comicsHeader.yaml
+  ComicsBase:
+    $ref: ./comics/entity/comicsBase.yaml
+  ComicsFull:
+    $ref: ./comics/entity/comicsFull.yaml
+  ComicsBaseResponse:
+    $ref: ./comics/entity/comicsBaseResponse.yaml
+  ComicsFullResponse:
+    $ref: ./comics/entity/comicsFullResponse.yaml
+  ComicCollectionHeader:
+    $ref: ./comic_collection/entity/comicCollectionHeader.yaml
+  ComicCollectionBase:
+    $ref: ./comic_collection/entity/comicCollectionBase.yaml
+  ComicCollectionFull:
+    $ref: ./comic_collection/entity/comicCollectionFull.yaml
+  ComicCollectionBaseResponse:
+    $ref: ./comic_collection/entity/comicCollectionBaseResponse.yaml
+  ComicCollectionFullResponse:
+    $ref: ./comic_collection/entity/comicCollectionFullResponse.yaml
+  ComicSeriesHeader:
+    $ref: ./comic_series/entity/comicSeriesHeader.yaml
+  ComicSeriesBase:
+    $ref: ./comic_series/entity/comicSeriesBase.yaml
+  ComicSeriesFull:
+    $ref: ./comic_series/entity/comicSeriesFull.yaml
+  ComicSeriesBaseResponse:
+    $ref: ./comic_series/entity/comicSeriesBaseResponse.yaml
+  ComicSeriesFullResponse:
+    $ref: ./comic_series/entity/comicSeriesFullResponse.yaml
+  ComicStripHeader:
+    $ref: ./comic_strip/entity/comicStripHeader.yaml
+  ComicStripBase:
+    $ref: ./comic_strip/entity/comicStripBase.yaml
+  ComicStripFull:
+    $ref: ./comic_strip/entity/comicStripFull.yaml
+  ComicStripBaseResponse:
+    $ref: ./comic_strip/entity/comicStripBaseResponse.yaml
+  ComicStripFullResponse:
+    $ref: ./comic_strip/entity/comicStripFullResponse.yaml
+  CompanyBase:
+    $ref: ./company/entity/companyBase.yaml
+  CompanyFull:
+    $ref: ./company/entity/companyFull.yaml
+  CompanyHeader:
+    $ref: ./company/entity/companyHeader.yaml
+  CompanyBaseResponse:
+    $ref: ./company/entity/companyBaseResponse.yaml
+  CompanyFullResponse:
+    $ref: ./company/entity/companyFullResponse.yaml
+  ConflictBase:
+    $ref: ./conflict/entity/conflictBase.yaml
+  ConflictFull:
+    $ref: ./conflict/entity/conflictFull.yaml
+  ConflictHeader:
+    $ref: ./conflict/entity/conflictHeader.yaml
+  ConflictBaseResponse:
+    $ref: ./conflict/entity/conflictBaseResponse.yaml
+  ConflictFullResponse:
+    $ref: ./conflict/entity/conflictFullResponse.yaml
+  ContentLanguage:
+    $ref: ./content_language/entity/contentLanguage.yaml
+  ContentRatingSystem:
+    $ref: ./content_rating/entity/enum/contentRatingSystem.yaml
+  ContentRating:
+    $ref: ./content_rating/entity/contentRating.yaml
+  Country:
+    $ref: ./country/entity/country.yaml
+  ElementHeader:
+    $ref: ./element/entity/elementHeader.yaml
+  ElementBase:
+    $ref: ./element/entity/elementBase.yaml
+  ElementFull:
+    $ref: ./element/entity/elementFull.yaml
+  ElementBaseResponse:
+    $ref: ./element/entity/elementBaseResponse.yaml
+  ElementFullResponse:
+    $ref: ./element/entity/elementFullResponse.yaml
+  EpisodeHeader:
+    $ref: ./episode/entity/episodeHeader.yaml
+  EpisodeBase:
+    $ref: ./episode/entity/episodeBase.yaml
+  EpisodeFull:
+    $ref: ./episode/entity/episodeFull.yaml
+  EpisodeBaseResponse:
+    $ref: ./episode/entity/episodeBaseResponse.yaml
+  EpisodeFullResponse:
+    $ref: ./episode/entity/episodeFullResponse.yaml
+  Error:
+    $ref: ./common/entity/error.yaml
+  FoodHeader:
+    $ref: ./food/entity/foodHeader.yaml
+  FoodBase:
+    $ref: ./food/entity/foodBase.yaml
+  FoodFull:
+    $ref: ./food/entity/foodFull.yaml
+  FoodBaseResponse:
+    $ref: ./food/entity/foodBaseResponse.yaml
+  FoodFullResponse:
+    $ref: ./food/entity/foodFullResponse.yaml
+  Gender:
+    $ref: ./common/entity/enum/gender.yaml
+  Genre:
+    $ref: ./genre/entity/genre.yaml
+  LiteratureHeader:
+    $ref: ./literature/entity/literatureHeader.yaml
+  LiteratureBase:
+    $ref: ./literature/entity/literatureBase.yaml
+  LiteratureFull:
+    $ref: ./literature/entity/literatureFull.yaml
+  LiteratureBaseResponse:
+    $ref: ./literature/entity/literatureBaseResponse.yaml
+  LiteratureFullResponse:
+    $ref: ./literature/entity/literatureFullResponse.yaml
+  LocationHeader:
+    $ref: ./location/entity/locationHeader.yaml
+  LocationBase:
+    $ref: ./location/entity/locationBase.yaml
+  LocationFull:
+    $ref: ./location/entity/locationFull.yaml
+  LocationBaseResponse:
+    $ref: ./location/entity/locationBaseResponse.yaml
+  LocationFullResponse:
+    $ref: ./location/entity/locationFullResponse.yaml
+  MagazineHeader:
+    $ref: ./magazine/entity/magazineHeader.yaml
+  MagazineBase:
+    $ref: ./magazine/entity/magazineBase.yaml
+  MagazineFull:
+    $ref: ./magazine/entity/magazineFull.yaml
+  MagazineBaseResponse:
+    $ref: ./magazine/entity/magazineBaseResponse.yaml
+  MagazineFullResponse:
+    $ref: ./magazine/entity/magazineFullResponse.yaml
+  MagazineSeriesHeader:
+    $ref: ./magazine_series/entity/magazineSeriesHeader.yaml
+  MagazineSeriesBase:
+    $ref: ./magazine_series/entity/magazineSeriesBase.yaml
+  MagazineSeriesFull:
+    $ref: ./magazine_series/entity/magazineSeriesFull.yaml
+  MagazineSeriesBaseResponse:
+    $ref: ./magazine_series/entity/magazineSeriesBaseResponse.yaml
+  MagazineSeriesFullResponse:
+    $ref: ./magazine_series/entity/magazineSeriesFullResponse.yaml
+  MaritalStatus:
+    $ref: ./common/entity/enum/maritalStatus.yaml
+  MaterialHeader:
+    $ref: ./material/entity/materialHeader.yaml
+  MaterialBase:
+    $ref: ./material/entity/materialBase.yaml
+  MaterialFull:
+    $ref: ./material/entity/materialFull.yaml
+  MaterialBaseResponse:
+    $ref: ./material/entity/materialBaseResponse.yaml
+  MaterialFullResponse:
+    $ref: ./material/entity/materialFullResponse.yaml
+  MedicalConditionHeader:
+    $ref: ./medical_condition/entity/medicalConditionHeader.yaml
+  MedicalConditionBase:
+    $ref: ./medical_condition/entity/medicalConditionBase.yaml
+  MedicalConditionFull:
+    $ref: ./medical_condition/entity/medicalConditionFull.yaml
+  MedicalConditionBaseResponse:
+    $ref: ./medical_condition/entity/medicalConditionBaseResponse.yaml
+  MedicalConditionFullResponse:
+    $ref: ./medical_condition/entity/medicalConditionFullResponse.yaml
+  MovieHeader:
+    $ref: ./movie/entity/movieHeader.yaml
+  MovieBase:
+    $ref: ./movie/entity/movieBase.yaml
+  MovieFull:
+    $ref: ./movie/entity/movieFull.yaml
+  MovieBaseResponse:
+    $ref: ./movie/entity/movieBaseResponse.yaml
+  MovieFullResponse:
+    $ref: ./movie/entity/movieFullResponse.yaml
+  OccupationHeader:
+    $ref: ./occupation/entity/occupationHeader.yaml
+  OccupationBase:
+    $ref: ./occupation/entity/occupationBase.yaml
+  OccupationFull:
+    $ref: ./occupation/entity/occupationFull.yaml
+  OccupationBaseResponse:
+    $ref: ./occupation/entity/occupationBaseResponse.yaml
+  OccupationFullResponse:
+    $ref: ./occupation/entity/occupationFullResponse.yaml
+  OrganizationHeader:
+    $ref: ./organization/entity/organizationHeader.yaml
+  OrganizationBase:
+    $ref: ./organization/entity/organizationBase.yaml
+  OrganizationFull:
+    $ref: ./organization/entity/organizationFull.yaml
+  OrganizationBaseResponse:
+    $ref: ./organization/entity/organizationBaseResponse.yaml
+  OrganizationFullResponse:
+    $ref: ./organization/entity/organizationFullResponse.yaml
+  PerformerHeader:
+    $ref: ./performer/entity/performerHeader.yaml
+  PerformerBase:
+    $ref: ./performer/entity/performerBase.yaml
+  PerformerFull:
+    $ref: ./performer/entity/performerFull.yaml
+  PerformerBaseResponse:
+    $ref: ./performer/entity/performerBaseResponse.yaml
+  PerformerFullResponse:
+    $ref: ./performer/entity/performerFullResponse.yaml
+  Platform:
+    $ref: ./platform/entity/platform.yaml
+  ProductionRunUnit:
+    $ref: ./trading_card_set/entity/enum/productionRunUnit.yaml
+  Reference:
+    $ref: ./reference/entity/reference.yaml
+  ReferenceType:
+    $ref: ./reference/entity/enum/referenceType.yaml
+  ResponsePage:
+    $ref: ./common/entity/responsePage.yaml
+  ResponseSort:
+    $ref: ./common/entity/responseSort.yaml
+  ResponseSortClause:
+    $ref: ./common/entity/responseSortClause.yaml
+  ResponseSortDirection:
+    $ref: ./common/entity/enum/responseSortDirection.yaml
+  SeasonHeader:
+    $ref: ./season/entity/seasonHeader.yaml
+  SeasonBase:
+    $ref: ./season/entity/seasonBase.yaml
+  SeasonFull:
+    $ref: ./season/entity/seasonFull.yaml
+  SeasonBaseResponse:
+    $ref: ./season/entity/seasonBaseResponse.yaml
+  SeasonFullResponse:
+    $ref: ./season/entity/seasonFullResponse.yaml
+  SeriesHeader:
+    $ref: ./series/entity/seriesHeader.yaml
+  SeriesBase:
+    $ref: ./series/entity/seriesBase.yaml
+  SeriesFull:
+    $ref: ./series/entity/seriesFull.yaml
+  SeriesBaseResponse:
+    $ref: ./series/entity/seriesBaseResponse.yaml
+  SeriesFullResponse:
+    $ref: ./series/entity/seriesFullResponse.yaml
+  SoundtrackHeader:
+    $ref: ./soundtrack/entity/soundtrackHeader.yaml
+  SoundtrackBase:
+    $ref: ./soundtrack/entity/soundtrackBase.yaml
+  SoundtrackFull:
+    $ref: ./soundtrack/entity/soundtrackFull.yaml
+  SoundtrackBaseResponse:
+    $ref: ./soundtrack/entity/soundtrackBaseResponse.yaml
+  SoundtrackFullResponse:
+    $ref: ./soundtrack/entity/soundtrackFullResponse.yaml
+  SpacecraftHeader:
+    $ref: ./spacecraft/entity/spacecraftHeader.yaml
+  SpacecraftBase:
+    $ref: ./spacecraft/entity/spacecraftBase.yaml
+  SpacecraftFull:
+    $ref: ./spacecraft/entity/spacecraftFull.yaml
+  SpacecraftBaseResponse:
+    $ref: ./spacecraft/entity/spacecraftBaseResponse.yaml
+  SpacecraftFullResponse:
+    $ref: ./spacecraft/entity/spacecraftFullResponse.yaml
+  SpacecraftClassHeader:
+    $ref: ./spacecraft_class/entity/spacecraftClassHeader.yaml
+  SpacecraftClassBase:
+    $ref: ./spacecraft_class/entity/spacecraftClassBase.yaml
+  SpacecraftClassFull:
+    $ref: ./spacecraft_class/entity/spacecraftClassFull.yaml
+  SpacecraftClassBaseResponse:
+    $ref: ./spacecraft_class/entity/spacecraftClassBaseResponse.yaml
+  SpacecraftClassFullResponse:
+    $ref: ./spacecraft_class/entity/spacecraftClassFullResponse.yaml
+  SpacecraftType:
+    $ref: ./spacecraft_type/entity/spacecraftType.yaml
+  SpeciesHeader:
+    $ref: ./species/entity/speciesHeader.yaml
+  SpeciesBase:
+    $ref: ./species/entity/speciesBase.yaml
+  SpeciesFull:
+    $ref: ./species/entity/speciesFull.yaml
+  SpeciesBaseResponse:
+    $ref: ./species/entity/speciesBaseResponse.yaml
+  SpeciesFullResponse:
+    $ref: ./species/entity/speciesFullResponse.yaml
+  StaffHeader:
+    $ref: ./staff/entity/staffHeader.yaml
+  StaffBase:
+    $ref: ./staff/entity/staffBase.yaml
+  StaffFull:
+    $ref: ./staff/entity/staffFull.yaml
+  StaffBaseResponse:
+    $ref: ./staff/entity/staffBaseResponse.yaml
+  StaffFullResponse:
+    $ref: ./staff/entity/staffFullResponse.yaml
+  TechnologyHeader:
+    $ref: ./technology/entity/technologyHeader.yaml
+  TechnologyBase:
+    $ref: ./technology/entity/technologyBase.yaml
+  TechnologyFull:
+    $ref: ./technology/entity/technologyFull.yaml
+  TechnologyBaseResponse:
+    $ref: ./technology/entity/technologyBaseResponse.yaml
+  TechnologyFullResponse:
+    $ref: ./technology/entity/technologyFullResponse.yaml
+  TitleHeader:
+    $ref: ./title/entity/titleHeader.yaml
+  TitleBase:
+    $ref: ./title/entity/titleBase.yaml
+  TitleFull:
+    $ref: ./title/entity/titleFull.yaml
+  TitleBaseResponse:
+    $ref: ./title/entity/titleBaseResponse.yaml
+  TitleFullResponse:
+    $ref: ./title/entity/titleFullResponse.yaml
+  TradingCardHeader:
+    $ref: ./trading_card/entity/tradingCardHeader.yaml
+  TradingCardBase:
+    $ref: ./trading_card/entity/tradingCardBase.yaml
+  TradingCardFull:
+    $ref: ./trading_card/entity/tradingCardFull.yaml
+  TradingCardBaseResponse:
+    $ref: ./trading_card/entity/tradingCardBaseResponse.yaml
+  TradingCardFullResponse:
+    $ref: ./trading_card/entity/tradingCardFullResponse.yaml
+  TradingCardDeckHeader:
+    $ref: ./trading_card_deck/entity/tradingCardDeckHeader.yaml
+  TradingCardDeckBase:
+    $ref: ./trading_card_deck/entity/tradingCardDeckBase.yaml
+  TradingCardDeckFull:
+    $ref: ./trading_card_deck/entity/tradingCardDeckFull.yaml
+  TradingCardDeckBaseResponse:
+    $ref: ./trading_card_deck/entity/tradingCardDeckBaseResponse.yaml
+  TradingCardDeckFullResponse:
+    $ref: ./trading_card_deck/entity/tradingCardDeckFullResponse.yaml
+  TradingCardSetHeader:
+    $ref: ./trading_card_set/entity/tradingCardSetHeader.yaml
+  TradingCardSetBase:
+    $ref: ./trading_card_set/entity/tradingCardSetBase.yaml
+  TradingCardSetFull:
+    $ref: ./trading_card_set/entity/tradingCardSetFull.yaml
+  TradingCardSetBaseResponse:
+    $ref: ./trading_card_set/entity/tradingCardSetBaseResponse.yaml
+  TradingCardSetFullResponse:
+    $ref: ./trading_card_set/entity/tradingCardSetFullResponse.yaml
+  VideoGameHeader:
+    $ref: ./video_game/entity/videoGameHeader.yaml
+  VideoGameBase:
+    $ref: ./video_game/entity/videoGameBase.yaml
+  VideoGameFull:
+    $ref: ./video_game/entity/videoGameFull.yaml
+  VideoGameBaseResponse:
+    $ref: ./video_game/entity/videoGameBaseResponse.yaml
+  VideoGameFullResponse:
+    $ref: ./video_game/entity/videoGameFullResponse.yaml
+  VideoReleaseHeader:
+    $ref: ./video_release/entity/videoReleaseHeader.yaml
+  VideoReleaseBase:
+    $ref: ./video_release/entity/videoReleaseBase.yaml
+  VideoReleaseFormat:
+    $ref: ./video_release/entity/enum/videoReleaseFormat.yaml
+  VideoReleaseFull:
+    $ref: ./video_release/entity/videoReleaseFull.yaml
+  VideoReleaseBaseResponse:
+    $ref: ./video_release/entity/videoReleaseBaseResponse.yaml
+  VideoReleaseFullResponse:
+    $ref: ./video_release/entity/videoReleaseFullResponse.yaml
+  WeaponHeader:
+    $ref: ./weapon/entity/weaponHeader.yaml
+  WeaponBase:
+    $ref: ./weapon/entity/weaponBase.yaml
+  WeaponFull:
+    $ref: ./weapon/entity/weaponFull.yaml
+  WeaponBaseResponse:
+    $ref: ./weapon/entity/weaponBaseResponse.yaml
+  WeaponFullResponse:
+    $ref: ./weapon/entity/weaponFullResponse.yaml

@@ -1,0 +1,106 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+    }
+}
+allprojects {
+    apply plugin: 'java'
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+version = '1.0'
+mainClassName = 'com.jeffheaton.dissertation.JeffDissertation'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+	compile('net.sf.opencsv:opencsv:2.3')
+    compile('gov.nist.math:jama:1.0.3')
+    compile('jfree:jfreechart:1.0.12')
+	compile group: 'org.json', name: 'json', version: '20160212'
+	compile('org.encog:encog-core:3.4.0-SNAPSHOT')
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.jeffheaton.dissertation.JeffDissertation'
+    }
+}
+
+task(runNeuralXOR, group: 'commands', description: 'Run an experiment',
+        dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jeffheaton.dissertation.JeffDissertation'
+    classpath = sourceSets.main.runtimeClasspath
+	args = ["neural-xor"]	
+}
+
+task(runSimpleGP, group: 'commands', description: 'Run an experiment',
+        dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jeffheaton.dissertation.JeffDissertation'
+    classpath = sourceSets.main.runtimeClasspath
+	args = ["simple-gp"]	
+}
+
+task(runGP, group: 'commands', description: 'Run an experiment',
+        dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jeffheaton.dissertation.JeffDissertation'
+    classpath = sourceSets.main.runtimeClasspath
+	args = ["file-gp"]	
+}
+
+task(runExperiment1, group: 'commands', description: 'Run experiment 1',
+        dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jeffheaton.dissertation.JeffDissertation'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ["experiment-1"]
+}
+
+task(runExperiment2, group: 'commands', description: 'Run experiment 2',
+        dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jeffheaton.dissertation.JeffDissertation'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ["experiment-2"]
+}
+
+task(runExperiment3, group: 'commands', description: 'Run experiment 3',
+        dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jeffheaton.dissertation.JeffDissertation'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ["experiment-3"]
+}
+
+task(runExperiment4, group: 'commands', description: 'Run experiment 4',
+        dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jeffheaton.dissertation.JeffDissertation'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ["experiment-4"]
+}
+
+task(runExperiment5, group: 'commands', description: 'Run experiment 5',
+        dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jeffheaton.dissertation.JeffDissertation'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ["experiment-5"]
+}
+
+task(runExperiment6, group: 'commands', description: 'Run experiment 6',
+        dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jeffheaton.dissertation.JeffDissertation'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ["experiment-6"]
+}

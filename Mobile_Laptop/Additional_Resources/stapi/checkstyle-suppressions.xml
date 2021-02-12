@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+		"-//Puppy Crawl//DTD Suppressions 1.1//EN"
+		"http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<suppressions>
+	<suppress files="[\\/]generated[\\/]|_" checks="."/>
+	<suppress files=".+RestBeanParams\.java" checks="FileLength|MethodCount"/>
+	<suppress files=".+query[\\/]QueryBuilder\.java" checks="FileLength"/>
+	<suppress files=".+CategoryTitle\.java" checks="FileLength"/>
+	<suppress files=".+CountryDTOProvider\.java" checks="FileLength"/>
+	<suppress files=".+EtlJobConfiguration\.java" checks="FileLength"/>
+	<suppress files=".+StapiRestClient\.java" checks="FileLength"/>
+	<suppress files=".+StapiSoapClient\.java" checks="FileLength"/>
+	<suppress files="com[\\/]cezarykluczynski[\\/]stapi[\\/]client[\\/]" checks="ClassFanOutComplexity"/>
+</suppressions>

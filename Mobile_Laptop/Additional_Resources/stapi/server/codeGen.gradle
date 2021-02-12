@@ -1,0 +1,246 @@
+import groovy.io.FileType
+
+import java.util.stream.Collectors
+
+task codeGen(type: EndpointScaffoldingGeneratorTask) << {
+
+}
+
+class EndpointScaffoldingGeneratorTask extends DefaultTask {
+
+	private static final String MOVIE_ENTITY_NAME = "Movie"
+	private static final String MOVIE_PACKAGE_NAME = "movie"
+
+	List<String> serverFilesToCopy = [
+			"MovieConfiguration.java",
+			"MovieRestBeanParams.java",
+			"MovieRestEndpoint.java",
+			"MovieSoapEndpoint.java",
+			"MovieHeaderRestMapper.java",
+			"MovieHeaderSoapMapper.java",
+			"MovieBaseRestMapper.java",
+			"MovieFullRestMapper.java",
+			"MovieBaseSoapMapper.java",
+			"MovieFullSoapMapper.java",
+			"MovieRestQuery.java",
+			"MovieSoapQuery.java",
+			"MovieRestReader.java",
+			"MovieSoapReader.java",
+			"MovieCreationConfiguration.java",
+			"MovieProcessor.java",
+			"MovieReader.java",
+			"MovieWriter.java",
+			"MovieTemplateProcessor.java",
+			"MovieTemplatePageProcessor.java",
+			"MoviePageProcessor.java",
+	]
+
+	List<String> serverTestFilesToCopy = [
+			"AbstractMovieEndpointIntegrationTest.groovy",
+			"AbstractMovieMapperTest.groovy",
+			"MovieConfigurationTest.groovy",
+			"MovieRestBeanParamsTest.groovy",
+			"MovieRestEndpointTest.groovy",
+			"MovieRestEndpointIntegrationTest.groovy",
+			"MovieSoapEndpointTest.groovy",
+			"MovieSoapEndpointIntegrationTest.groovy",
+			"MovieHeaderRestMapperTest.groovy",
+			"MovieHeaderSoapMapperTest.groovy",
+			"MovieBaseRestMapperTest.groovy",
+			"MovieFullRestMapperTest.groovy",
+			"MovieBaseSoapMapperTest.groovy",
+			"MovieFullSoapMapperTest.groovy",
+			"MovieRestQueryTest.groovy",
+			"MovieSoapQueryTest.groovy",
+			"MovieRestReaderTest.groovy",
+			"MovieSoapReaderTest.groovy",
+			"MovieCreationConfigurationTest.groovy",
+			"MovieProcessorTest.groovy",
+			"MovieReaderTest.groovy",
+			"MovieWriterTest.groovy",
+			"MovieTemplateProcessorTest.groovy",
+			"MovieTemplatePageProcessorTest.groovy",
+			"MoviePageProcessorTest.groovy",
+	]
+
+	List<String> modelFilesToCopy = [
+			"MovieRequestDTO.java",
+			"MovieRepository.java",
+			"MovieRepositoryCustom.java",
+			"MovieRepositoryImpl.java",
+			"MovieQueryBuilderFactory.java",
+			"MovieInitialQueryBuilderFactory.java"
+	]
+
+	List<String> modelTestFilesToCopy = [
+			"MovieRepositoryImplTest.groovy",
+			"MovieQueryBuilderFactoryTest.groovy",
+			"MovieInitialQueryBuilderFactoryTest.groovy",
+	]
+
+	String targetEntityName
+
+	String targetEntityNameLc
+
+	String targetPackageName
+
+	String sourceEntityName
+
+	String sourceEntityNameLc
+
+	String sourcePackageName
+
+	String scaffoldType
+
+	int total = 0
+
+	int copied = 0
+
+	@TaskAction
+	def generateEnpoint() {
+		targetEntityName = project.property('targetEntityName')
+		if (targetEntityName == "") {
+			println "Target entity name cannot be empty"
+			System.exit(-1)
+		}
+
+		sourceEntityName = project.property('sourceEntityName')
+		if (sourceEntityName == "") {
+			println "Source entity name cannot be empty"
+			System.exit(-1)
+		}
+
+		scaffoldType = project.property('scaffoldType')
+		if (scaffoldType == "") {
+			scaffoldType = 'endpoint'
+		}
+
+		sourcePackageName = underscoreSeparated(sourceEntityName)
+		println "sourcePackageName: " + sourcePackageName
+		sourceEntityName = sourceEntityName.capitalize()
+		sourceEntityNameLc = sourceEntityName[0].toLowerCase() + sourceEntityName.substring(1)
+
+		targetPackageName = underscoreSeparated(targetEntityName)
+		println "targetPackageName: " + targetPackageName
+		targetEntityName = targetEntityName.capitalize()
+		targetEntityNameLc = targetEntityName[0].toLowerCase() + targetEntityName.substring(1)
+
+		println "Generating scaffolding for endpoint ${targetEntityName}..."
+
+		if (scaffoldType == 'endpoint') {
+			copyInDirectory("server/src/main/java/com/cezarykluczynski/stapi/server/" + sourcePackageName, toSourceEntity(serverFilesToCopy))
+			copyInDirectory("server/src/test/groovy/com/cezarykluczynski/stapi/server/" + sourcePackageName, toSourceEntity(serverTestFilesToCopy))
+			copyInDirectory("model/src/main/java/com/cezarykluczynski/stapi/model/" + sourcePackageName, toSourceEntity(modelFilesToCopy))
+			copyInDirectory("model/src/test/groovy/com/cezarykluczynski/stapi/model/" + sourcePackageName, toSourceEntity(modelTestFilesToCopy))
+		} else if (scaffoldType == 'etl') {
+			copyInDirectory("etl/src/main/java/com/cezarykluczynski/stapi/etl/" + sourcePackageName, toSourceEntity(serverFilesToCopy))
+			copyInDirectory("etl/src/test/groovy/com/cezarykluczynski/stapi/etl/" + sourcePackageName, toSourceEntity(serverTestFilesToCopy))
+		}
+
+		println "Files copies: ${copied}, files skipped: ${total - copied}."
+	}
+
+	def copyInDirectory(String path, List<String> filesToCopy) {
+		def dir = new File(path)
+		dir.eachFileRecurse (FileType.FILES) { file ->
+			total++
+			def baseFileAbsolutePath = file.absolutePath.toString()
+			if (!filesToCopy.stream().anyMatch({ fileToCopy -> baseFileAbsolutePath.endsWith(fileToCopy) })) {
+				println "Skipping ${baseFileAbsolutePath} - not on list of files to copy."
+				return
+			}
+			def targetAbsolutePath = transformToNewEntity(baseFileAbsolutePath)
+
+			File targetFile = new File(targetAbsolutePath)
+
+			if (targetFile.exists()) {
+				println "Skipping ${targetAbsolutePath} - file already exists."
+				return
+			}
+
+			targetFile.parentFile.mkdirs()
+			targetFile.createNewFile()
+
+			def targetContents = transformToNewEntity(new File(baseFileAbsolutePath).text)
+			targetContents = maybeClear(targetContents, baseFileAbsolutePath)
+
+			targetFile.write(targetContents)
+
+			copied++
+		}
+	}
+
+	def transformToNewEntity(String content) {
+		content
+				.replace(sourceEntityName, targetEntityName)
+				.replace(sourceEntityNameLc, targetEntityNameLc)
+				.replace(sourcePackageName, targetPackageName)
+	}
+
+	def toSourceEntity(List<String> fileNames) {
+		fileNames
+				.stream()
+				.map({ it -> it.replace(MOVIE_ENTITY_NAME, sourceEntityName) })
+				.collect(Collectors.toList())
+	}
+
+	def maybeClear(String content, String fileName) {
+		if (fileName.contains('RestBeanParams') && !fileName.contains(".groovy")) {
+			def parts = content.split('extends PageSortBeanParams \\{')
+			def end = parts[1].split("public static ${targetEntityName}RestBeanParams")
+			content = "${parts[0]}extends PageSortBeanParams {\n\npublic static ${targetEntityName}RestBeanParams${end[1]}"
+			content = content.readLines().stream().filter({
+				line -> !line.startsWith("import ") || line.contains("PageSortBeanParams")
+			}).collect(Collectors.toList()).join("\n")
+			content = content.replace("\npublic class", "public class")
+		}
+
+		if (fileName.contains("${targetEntityName}RestMapper") || fileName.contains("${targetEntityName}SoapMapper")) {
+			boolean isMapper = false
+
+			content = content.readLines().stream().map({ line ->
+				isMapper = isMapper || line.startsWith("@Mapper(")
+				boolean isMappings = line.startsWith("\t@Mapping({")
+
+				if (line.startsWith("import ")) {
+					if (line.contains("server.common.mapper.") || line.contains("mapstruct.Mapping") ||
+							line.contains("HeaderRestMapper") || line.contains("HeaderSoapMapper")) {
+						return null
+					}
+				}
+
+				if (isMapper && (line.endsWith(".class})") || line.endsWith(".class })"))) {
+					isMapper = false
+					return '@Mapper(config = MapstructConfiguration.class, uses = {})'
+				}
+
+				if (isMapper || isMappings) {
+					return null
+				}
+
+				return line
+			})
+			.filter({line -> line != null})
+			.collect(Collectors.toList()).join("\n")
+		}
+
+		if (fileName.contains("RequestDTO")) {
+			content = content
+					.replace("@EqualsAndHashCode(callSuper = true)", "@EqualsAndHashCode")
+
+			List<String> parts = content.split("extends RealWorldPersonRequestDTO \\{")
+			content = "${parts[0]} {\n}\n"
+
+			content = content.readLines().stream().filter({ line ->
+					!line.contains("RealWorldPerson")
+			}).collect(Collectors.toList()).join("\n")
+		}
+
+		return content
+	}
+
+	String underscoreSeparated(String s) {
+		return s.replaceAll(/\B[A-Z]/) { '_' + it }.toLowerCase()
+	}
+
+}
